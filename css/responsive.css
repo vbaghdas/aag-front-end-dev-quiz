@@ -1,0 +1,26 @@
+/*==========================================================
+
+                START MOBILE RESPONSIVE
+
+===========================================================*/
+@media (max-width: 480px) {
+    #form-info-container {
+        min-height: 480px;
+    }
+
+    #form-info {
+        width: 75%;
+    }
+
+    #form-info #first-next-btn {
+        bottom: -18%;
+    }
+
+    #form-info #second-next-btn {
+        bottom: -19%;
+    }
+    
+    #modal-content {
+        width: 95%;
+    }
+}
