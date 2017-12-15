@@ -94,7 +94,7 @@ hr {
 #form-info-container {
     text-align: center;
     min-height: 430px;
-    margin: 30px;
+    margin: 30px 30px 20px 30px;
 }
 
 #form-info {
@@ -166,11 +166,11 @@ hr {
 }
 
 #form-info #first-next-btn {
-    bottom: -25%;
+    bottom: -23%;
 }
 
 #form-info #second-next-btn {
-    bottom: -21%;
+    bottom: -19%;
 }
 
 #form-info #submit-btn {

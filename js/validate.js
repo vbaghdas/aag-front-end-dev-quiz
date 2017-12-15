@@ -10,9 +10,9 @@ function applyClickHandlers() {
     $('#form-info').on('click', '#second-next-btn', secondForm);
     $('#form-info').on('click', '#submit-btn', submitForm);
     $('#modal-content').on('click', '#modal-btn', handleModal);
-    $('#full-name').on('keypress', requireLetters);
-    $('#zip-code').on('keypress', requireNumbers);
-    $('#phone').on('keypress', requireNumbers);
+    $('#form-info').on('keypress', '#full-name', requireLetters);
+    $('#form-info').on('keypress', '#zip-code', requireNumbers);
+    $('#form-info').on('keypress', '#phone', requireNumbers);
     resetBorderColor();
 }
 
@@ -129,13 +129,13 @@ function showModal() {
     $('#modal-header h2').text('Thank You!');
     $('#modal-body > p').text('We will send you more information via email shortly.');
     $('#modal-shadow').css('display', 'block');
-    $('#modal-content').fadeIn('slow');
+    $('#modal-content').fadeIn('fast');
 }
 
 // Close modal when button is clicked
 function handleModal() {
     $('#modal-shadow').css('display', 'none');
-    $('#modal-content').css('display', 'none');
+    $('#modal-content').fadeOut('fast');
 }
 
 // Only allow alphabetical characters on input
@@ -145,7 +145,7 @@ function requireLetters(event) {
     return pattern.test(value);
 }
 
-// Only allow alphabetical characters on input
+// Only allow numerical characters on input
 function requireNumbers(event) {
     var value = String.fromCharCode(event.which);
     var pattern = new RegExp(/^[0-9]*$/gm);
