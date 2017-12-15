@@ -56,6 +56,14 @@ function firstForm() {
     return false;
 }
 
+// Animate first form when next button is clicked
+function animateFirstForm() {
+    $('#second').fadeIn('slow');
+    $('#first').css({
+        'display': 'none'
+    });
+}
+
 // Second Form Validation
 function secondForm() {
     proceed = true;
@@ -87,6 +95,14 @@ function secondForm() {
     return false;
 }
 
+// Animate second form when next button is clicked
+function animateSecondForm() {
+    $('#third').fadeIn('slow');
+    $('#second').css({
+        'display': 'none'
+    });
+}
+
 // Submit Form Validation
 function submitForm() {
     proceed = true;
@@ -113,29 +129,13 @@ function showModal() {
     $('#modal-header h2').text('Thank You!');
     $('#modal-body > p').text('We will send you more information via email shortly.');
     $('#modal-shadow').css('display', 'block');
-    $('#modal-content').css('display', 'block');
+    $('#modal-content').fadeIn('slow');
 }
 
 // Close modal when button is clicked
 function handleModal() {
     $('#modal-shadow').css('display', 'none');
     $('#modal-content').css('display', 'none');
-}
-
-// Animate first form when next button is clicked
-function animateFirstForm() {
-    $('#second').fadeIn('slow');
-    $('#first').css({
-        'display': 'none'
-    });
-}
-
-// Animate second form when next button is clicked
-function animateSecondForm() {
-    $('#third').fadeIn('slow');
-    $('#second').css({
-        'display': 'none'
-    });
 }
 
 // Only allow alphabetical characters on input
