@@ -32,12 +32,15 @@
     </div>
     <!-- End Sub Header -->
 
-    <!-- Start Form -->
+    <!-- Start Form Container -->
     <div id="form-info-container">
+
+        <!-- Start Form -->
         <form id="form-info" method="post">
 
             <!-- Start First Fieldset -->
             <fieldset id="first">
+
                 <!-- Property Value -->
                 <label for="property-value">What's the estimated property value?</label>
                 <select name="property-value" id="property-value" aria-required="true">
@@ -62,6 +65,7 @@
                     <option value="900k">900k</option>
                     <option value="950k">950k</option>
                 </select>
+
                 <!-- Mortgage Balance -->
                 <label for="mortgage-balance">What's your mortgage balance?</label>
                 <select name="mortgage-balance" id="mortgage-balance" aria-required="true">
@@ -86,19 +90,17 @@
                     <option value="900k">900k</option>
                     <option value="950k">950k</option>
                 </select>
+
                 <!-- Zip Code -->
                 <label for="zipcode">What's the zip code for your property?</label>
                 <input type="text" name="zip-code" id="zip-code" maxlength="5" placeholder="Enter property zip"/>
-                <!-- Next Button -->
-                <button type="button" id="first-next-btn" class="btn form-btn">
-                    next
-                    <i class="fa fa-angle-right"></i>
-                </button>
+
             </fieldset>
             <!-- End First Fieldset -->
 
             <!-- Start Second Fieldset -->
             <fieldset id="second">
+
                 <!-- Age -->
                 <label for="age">What is the age of the homeowner on the title?</label>
                 <select name="select-age" id="select-age" aria-required="true">
@@ -141,37 +143,40 @@
                     <option value="98">98</option>
                     <option value="99">99</option>
                 </select>
+
                 <!-- Full Name -->
                 <label for="name">What is your first and last name?</label>
                 <input type="text" name="full-name" id="full-name" class="text-field" maxlength="40" placeholder="Enter First and Last Name"/>
+                
                 <!-- Address -->
                 <label for="address">What is the property street address?</label>
                 <input type="text" name="address" id="address" class="text-field" maxlength="50" placeholder="Enter your street address"/>
-                <!-- Next Button -->
-                <button type="button" id="second-next-btn" class="btn form-btn">
-                    next
-                    <i class="fa fa-angle-right"></i>
-                </button>
+            
             </fieldset>
             <!-- End Second Fieldset -->
 
             <!-- Start Third Fieldset -->
             <fieldset id="third">
+
                 <!-- Phone Number -->
                 <label for="phone">What is your phone number?</label>
                 <p>Your phone number will help us make sure you live in the United States</p>
                 <input type="tel" name="phone" id="phone" maxlength="10" placeholder="Enter your phone number"/>
-                <!-- Submit Button -->
-                <button type="button" id="submit-btn" class="btn form-btn">
-                    submit
-                    <i class="fa fa-angle-right"></i>
-                </button>
+        
             </fieldset>
             <!-- End Third Fieldset -->
 
         </form>
+        <!-- End Form -->
+
+        <!-- Next and Submit Button -->
+        <button id="form-btn" class="btn first-next-btn">
+            <span>next</span>
+            <i class="fa fa-angle-right"></i>
+        </button>
+        
     </div>
-    <!-- End Form -->
+    <!-- End Form Container -->
 
     <!-- Start Footer -->
     <hr>

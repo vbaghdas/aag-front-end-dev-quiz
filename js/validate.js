@@ -6,9 +6,9 @@
 $(document).ready(applyClickHandlers);
 
 function applyClickHandlers() {
-    $('#form-info').on('click', '#first-next-btn', firstForm);
-    $('#form-info').on('click', '#second-next-btn', secondForm);
-    $('#form-info').on('click', '#submit-btn', submitForm);
+    $('#form-info-container').on('click', '.first-next-btn', firstForm);
+    $('#form-info-container').on('click', '.second-next-btn', secondForm);
+    $('#form-info-container').on('click', '.submit-btn', submitForm);
     $('#modal-content').on('click', '#modal-btn', handleModal);
     $('#form-info').on('keypress', '#full-name', requireLetters);
     $('#form-info').on('keypress', '#zip-code', requireNumbers);
@@ -51,17 +51,13 @@ function firstForm() {
 
     // Everything looks good! proceed...
     if (proceed) {
-        animateFirstForm();
+        // Animate first form when next button is clicked and change button class
+        $('#form-btn').removeClass('first-next-btn');
+        $('#form-btn').addClass('second-next-btn');
+        $('#first').css({ 'display': 'none' });
+        $('#second').fadeIn('slow');
     }
     return false;
-}
-
-// Animate first form when next button is clicked
-function animateFirstForm() {
-    $('#second').fadeIn('slow');
-    $('#first').css({
-        'display': 'none'
-    });
 }
 
 // Second Form Validation
@@ -90,23 +86,20 @@ function secondForm() {
 
     // Everything looks good! proceed...
     if (proceed) {
-       animateSecondForm();
+        // Animate second form when next button is clicked and change button class
+        $('#form-btn').removeClass('second-next-btn');
+        $('#form-btn').addClass('submit-btn');
+        $('#form-btn span').text('submit');
+        $('#second').css({ 'display': 'none' });
+        $('#third').fadeIn('slow');
     }
     return false;
-}
-
-// Animate second form when next button is clicked
-function animateSecondForm() {
-    $('#third').fadeIn('slow');
-    $('#second').css({
-        'display': 'none'
-    });
 }
 
 // Submit Form Validation
 function submitForm() {
     proceed = true;
-    
+
     // Get input field values for third fieldset
     phone = $('#phone').val();
 
@@ -119,7 +112,16 @@ function submitForm() {
 
     // Everything looks good! proceed...
     if (proceed) {
+        // Reset form and show modal
+        $('#form-info')[0].reset();
         showModal();
+
+        // Animate back to first form when submit button is clicked and change button class
+        $('#form-btn').removeClass('submit-btn');
+        $('#form-btn').addClass('first-next-btn');
+        $('#form-btn span').text('next');
+        $('#third').css({ 'display': 'none' });
+        $('#first').fadeIn('slow');
     }
     return false;
 }
@@ -184,5 +186,4 @@ function resetBorderColor() {
     $('#phone').keyup(function(){
         $('#phone').css('border-color', '');
     });
-
 }

@@ -5,21 +5,8 @@
 ===========================================================*/
 @media (max-width: 480px) {
     #form-info-container {
-        min-height: 480px;
+        width: 95%;
     }
-
-    #form-info {
-        width: 75%;
-    }
-
-    #form-info #first-next-btn {
-        bottom: -16%;
-    }
-
-    #form-info #second-next-btn {
-        bottom: -17%;
-    }
-    
     #modal-content {
         width: 95%;
     }

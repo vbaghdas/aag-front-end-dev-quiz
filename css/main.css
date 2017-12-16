@@ -50,12 +50,14 @@ hr {
     border-radius: 3px;
     border-width: 2px;
     font-weight: 300;
-    font-size: 26px;
-    margin: auto;
+    font-size: 24px;
+    margin-bottom: 20px;
     padding: 7px 10px;
+    position: relative;
     width: 90%;
     cursor: pointer;
     color: #fff;
+    text-align: center;
 }
 
 .btn:hover {
@@ -93,8 +95,9 @@ hr {
 ===========================================================*/
 #form-info-container {
     text-align: center;
-    min-height: 430px;
-    margin: 30px 30px 20px 30px;
+    min-height: 422px;
+    width: 430px;
+    margin: auto;
 }
 
 #form-info {
@@ -102,10 +105,8 @@ hr {
     border-radius: 3px;
     border-top: 5px solid #15ac10;
     box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.3);
-    padding: 25px 35px;
-    position: relative;
-    width: 400px;
-    margin: auto;
+    margin: 30px 0 20px 0;
+    padding: 20px;
 }
 
 #form-info label {
@@ -151,30 +152,12 @@ hr {
     margin: 10px 0 20px;
 }
 
-#form-info .form-btn {
-    position: absolute;
-    left: 0;
-    right: 0;
-}
-
-#form-info .form-btn .fa {
+#form-btn .fa {
     font-weight: 700;
-    font-size: 38px;
+    font-size: 42px;
     line-height: .7;
     position: absolute;
     right: 5px;
-}
-
-#form-info #first-next-btn {
-    bottom: -23%;
-}
-
-#form-info #second-next-btn {
-    bottom: -19%;
-}
-
-#form-info #submit-btn {
-    bottom: -45%;
 }
 
 /*==========================================================
