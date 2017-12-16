@@ -152,6 +152,15 @@ hr {
     margin: 10px 0 20px;
 }
 
+#form-info input[type="text"]:focus,
+#form-info input[type="email"]:focus,
+#form-info input[type="tel"]:focus,
+#form-info textarea:focus,
+#form-info select:focus {
+    border: solid 2px #16ad0e;
+    outline: none;
+}
+
 #form-btn .fa {
     font-weight: 700;
     font-size: 42px;
