@@ -65,6 +65,11 @@ hr {
     border-color: #148d0e;
 }
 
+.btn:focus {
+    outline: none;
+    border: solid 2px #148d0e;
+}
+
 /*==========================================================
 
                 2. START MAIN HEADER SECTION

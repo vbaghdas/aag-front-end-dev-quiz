@@ -44,7 +44,7 @@ function firstForm() {
         $('#mortgage-balance').css('border-color', '#f44336');
         proceed = false;
     }
-    if (zipCode == "" || propertyValue == " ") {
+    if (zipCode == "" || zipCode.length < 5 || propertyValue == " ") {
         $('#zip-code').css('border-color', '#f44336');
         proceed = false;
     }
@@ -105,7 +105,7 @@ function submitForm() {
 
     // Simple validation at client's end
     // We simply change border color to red if empty field
-    if (phone == "" || phone == " ") {
+    if (phone == "" || phone == " " || phone.length < 10) {
         $('#phone').css('border-color', '#f44336');
         proceed = false;
     }
