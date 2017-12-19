@@ -23,7 +23,7 @@ var zipCode = null;
 var selectAge = null;
 var fullName = null
 var address = null;
-var selectAge = null;
+var phone = null;
 
 // First Form Validation
 function firstForm() {
@@ -129,7 +129,7 @@ function submitForm() {
 // Show modal when message has been sent
 function showModal() {
     $('#modal-header h2').text('Thank You!');
-    $('#modal-body > p').text('We will send you more information via email shortly.');
+    $('#modal-body > p').text('We will send you more information by mail in a few days.');
     $('#modal-shadow').css('display', 'block');
     $('#modal-content').fadeIn('fast');
 }
