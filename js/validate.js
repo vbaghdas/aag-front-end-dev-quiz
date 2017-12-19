@@ -75,7 +75,7 @@ function secondForm() {
         $('#select-age').css('border-color', '#f44336');
         proceed = false;
     }
-    if (fullName == "" || selectAge == "") {
+    if (fullName == "" || fullName.length > 2 || selectAge == "") {
         $('#full-name').css('border-color', '#f44336');
         proceed = false;
     }
@@ -144,6 +144,7 @@ function handleModal() {
 function requireLetters(event) {
     var value = String.fromCharCode(event.which);
     var pattern = new RegExp(/[a-zåäö]/i);
+    if (value == " ") return;
     return pattern.test(value);
 }
 
