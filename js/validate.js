@@ -161,7 +161,7 @@ function resetBorderColor() {
         $('#property-value').css('border-color', '');
     });
 
-    $('#mortgage-balance').click('', function(){
+    $('#mortgage-balance').click(function(){
         $('#mortgage-balance').css('border-color', '');
     });
 
