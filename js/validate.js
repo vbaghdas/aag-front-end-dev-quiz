@@ -75,7 +75,7 @@ function secondForm() {
         $('#select-age').css('border-color', '#f44336');
         proceed = false;
     }
-    if (fullName == "" || fullName.length > 2 || selectAge == "") {
+    if (fullName == "" || selectAge == "") {
         $('#full-name').css('border-color', '#f44336');
         proceed = false;
     }
