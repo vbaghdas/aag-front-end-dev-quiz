@@ -5,9 +5,9 @@
 ===========================================================*/
 @media (max-width: 480px) {
     #form-info-container {
-        width: 95%;
+        width: 90%;
     }
     #modal-content {
-        width: 95%;
+        width: 90%;
     }
 }
