@@ -142,8 +142,10 @@ hr {
     font-size: 20px;
     display: block;
     width: 100%;
+    height: 45px;
     margin: 10px 0;
-    padding: 10px;
+    padding: 0 10px;
+    -webkit-appearance: none; 
 }
 
 #form-info select {
@@ -154,6 +156,8 @@ hr {
     width: 100%;
     height: 45px;
     margin: 10px 0 20px;
+    padding: 0 10px;
+    -webkit-appearance: menulist; 
 }
 
 #form-info input[type="text"]:focus,
@@ -168,7 +172,7 @@ hr {
 #form-btn .fa {
     font-weight: 700;
     font-size: 42px;
-    line-height: .7;
+    line-height: .625;
     position: absolute;
     right: 5px;
 }
