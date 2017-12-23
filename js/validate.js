@@ -152,7 +152,31 @@ function requireLetters(event) {
 function requireNumbers(event) {
     var value = String.fromCharCode(event.which);
     var pattern = new RegExp(/^[0-9]*$/gm);
+    phoneFormat();
     return pattern.test(value);
+}
+
+function phoneFormat(){
+    // Strip all characters from the input except digits
+    var input = $('#phone').val();
+    input = input.replace(/\D/g,'');
+
+    // Trim the remaining input to ten characters, to preserve phone number format
+    input = input.substring(0,10);
+
+    // Based upon the length of the string, we add formatting as necessary
+    var size = input.length;
+    if (size == 0) {
+        input = input;
+    } else if (size < 4) {
+        input = '('+input;
+    } else if (size < 7) {
+        input = '('+input.substring(0,3)+') '+input.substring(3,6);
+    } else {
+        input = '('+input.substring(0,3)+') '+input.substring(3,6)+' - '+input.substring(6,9);
+    }
+    input = $('#phone').val(input);
+    return input;
 }
 
 // Reset previously set border colors and hide all message on .keyup() and .click()
