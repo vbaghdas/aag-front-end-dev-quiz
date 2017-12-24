@@ -132,9 +132,7 @@ hr {
 }
 
 #form-info input[type="text"],
-#form-info input[type="email"],
-#form-info input[type="tel"],
-#form-info textarea {
+#form-info input[type="tel"] {
     background: linear-gradient(#fefefe, #e9eae9);
     border: 2px solid #c1c5c8;
     border-radius: 4px;
