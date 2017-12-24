@@ -157,7 +157,7 @@ function requireNumbers(event) {
 }
 
 function phoneFormat(){
-    // Strip all characters from the input except digits
+    // Get phone input value and strip all characters except digits
     var input = $('#phone').val();
     input = input.replace(/\D/g,'');
 
