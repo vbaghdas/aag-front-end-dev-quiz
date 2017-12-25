@@ -1,214 +1,197 @@
 /*==========================================================
-
                 START VALIDATE SCRIPT
-
 ===========================================================*/
-$(document).ready(applyClickHandlers);
+$(document).ready(initValidate);
+var validate = null;
 
-function applyClickHandlers() {
-    $('#form-info-container').on('click', '.first-next-btn', firstForm);
-    $('#form-info-container').on('click', '.second-next-btn', secondForm);
-    $('#form-info-container').on('click', '.submit-btn', submitForm);
-    $('#modal-content').on('click', '#modal-btn', handleModal);
-    $('#form-info').on('keypress', '#full-name', requireLetters);
-    $('#form-info').on('keypress', '#zip-code', requireNumbers);
-    $('#form-info').on('keypress', '#phone', requireNumbers);
-    resetBorderColor();
+//Initialize on page load and instantiate validate object
+function initValidate() {
+    validate = new Validate();
+    validate.init();
 }
 
-var proceed = null;
-var propertyValue = null;
-var mortgageBalance = null;
-var zipCode = null;
-var selectAge = null;
-var fullName = null
-var address = null;
-var phone = null;
+function Validate() {
+    this.proceed = null;
+    this.propertyValue = null;
+    this.mortgageBalance = null;
+    this.zipCode = null;
+    this.selectAge = null;
+    this.fullName = null
+    this.address = null;
+    this.phone = null;
+    this.input = null;
+    this.inputLength = null;
 
-// First Form Validation
-function firstForm() {
-    proceed = true;
-
-    // Get input field values for first fieldset
-    propertyValue = $('#property-value').val();
-    mortgageBalance = $('#mortgage-balance').val();
-    zipCode = $('#zip-code').val();
-
-    // Simple validation at client's end
-    // We simply change border color to red if empty field
-    if (propertyValue == "" || propertyValue == " ") {
-        $('#property-value').css('border-color', '#f44336');
-        proceed = false;
-    }
-    if (mortgageBalance == "" || propertyValue == " ") {
-        $('#mortgage-balance').css('border-color', '#f44336');
-        proceed = false;
-    }
-    if (zipCode == "" || zipCode.length < 5 || propertyValue == " ") {
-        $('#zip-code').css('border-color', '#f44336');
-        proceed = false;
+    this.init = function() {
+        $('#form-info-container').on('click', '.first-next-btn', this.firstForm);
+        $('#form-info-container').on('click', '.second-next-btn', this.secondForm);
+        $('#form-info-container').on('click', '.submit-btn', this.submitForm.bind(this));
+        $('#form-info').on('keypress', '#full-name', this.requireLetters);
+        $('#form-info').on('keypress', '#zip-code', this.requireNumbers);
+        $('#form-info').on('keypress', '#phone', this.phoneFormat);
+        this.resetBorderColor();
+        this.closeModal();
     }
 
-    // Everything looks good! proceed...
-    if (proceed) {
-        // Animate first form when next button is clicked and change button class
-        $('#form-btn').removeClass('first-next-btn');
-        $('#form-btn').addClass('second-next-btn');
-        $('#first').css({ 'display': 'none' });
-        $('#second').fadeIn('slow');
-    }
-    return false;
-}
+    this.firstForm = function() {
+        this.proceed = true;
 
-// Second Form Validation
-function secondForm() {
-    proceed = true;
+        // Get input field values for first fieldset
+        this.propertyValue = $('#property-value').val();
+        this.mortgageBalance = $('#mortgage-balance').val();
+        this.zipCode = $('#zip-code').val();
 
-    // Get input field values for second fieldset
-    selectAge = $('#select-age').val();
-    fullName = $('#full-name').val();
-    address = $('#address').val();
-
-    // Simple validation at client's end
-    // We simply change border color to red if empty field
-    if (selectAge == "" || selectAge == " ") {
-        $('#select-age').css('border-color', '#f44336');
-        proceed = false;
-    }
-    if (fullName == "" || selectAge == "") {
-        $('#full-name').css('border-color', '#f44336');
-        proceed = false;
-    }
-    if (address == "" || selectAge == "") {
-        $('#address').css('border-color', '#f44336');
-        proceed = false;
+        // Validation at client's end
+        // We simply change border color to red if empty field
+        if (this.propertyValue == "" || this.propertyValue == " ") {
+            $('#property-value').css('border-color', '#f44336');
+            this.proceed = false;
+        }
+        if (this.mortgageBalance == "" || this.propertyValue == " ") {
+            $('#mortgage-balance').css('border-color', '#f44336');
+            this.proceed = false;
+        }
+        if (this.zipCode == "" || this.zipCode.length < 5 || this.propertyValue == " ") {
+            $('#zip-code').css('border-color', '#f44336');
+            this.proceed = false;
+        }
+        // Everything looks good! proceed...
+        if (this.proceed) {
+            // Animate first form when next button is clicked and change button class
+            $('#form-btn').removeClass('first-next-btn');
+            $('#form-btn').addClass('second-next-btn');
+            $('#first').css({ 'display': 'none' });
+            $('#second').fadeIn('slow');
+        }
+        return false;
     }
 
-    // Everything looks good! proceed...
-    if (proceed) {
-        // Animate second form when next button is clicked and change button class
-        $('#form-btn').removeClass('second-next-btn');
-        $('#form-btn').addClass('submit-btn');
-        $('#form-btn span').text('submit');
-        $('#second').css({ 'display': 'none' });
-        $('#third').fadeIn('slow');
+    this.secondForm = function() {
+        this.proceed = true;
+
+        // Get input field values for second fieldset
+        this.selectAge = $('#select-age').val();
+        this.fullName = $('#full-name').val();
+        this.address = $('#address').val();
+
+        // Validation at client's end
+        // We simply change border color to red if empty field
+        if (this.selectAge == "" || this.selectAge == " ") {
+            $('#select-age').css('border-color', '#f44336');
+            this.proceed = false;
+        }
+        if (this.fullName == "" || this.selectAge == "") {
+            $('#full-name').css('border-color', '#f44336');
+            this.proceed = false;
+        }
+        if (this.address == "" || this.selectAge == "") {
+            $('#address').css('border-color', '#f44336');
+            this.proceed = false;
+        }
+
+        // Everything looks good! proceed...
+        if (this.proceed) {
+            // Animate second form when next button is clicked and change button class
+            $('#form-btn').removeClass('second-next-btn');
+            $('#form-btn').addClass('submit-btn');
+            $('#form-btn span').text('submit');
+            $('#second').css({ 'display': 'none' });
+            $('#third').fadeIn('slow');
+        }
+        return false;
     }
-    return false;
-}
 
-// Submit Form Validation
-function submitForm() {
-    proceed = true;
+    this.submitForm = function() {
+        this.proceed = true;
 
-    // Get input field values for third fieldset
-    phone = $('#phone').val();
+        // Get input field values for third fieldset
+        this.phone = $('#phone').val();
 
-    // Simple validation at client's end
-    // We simply change border color to red if empty field
-    if (phone == "" || phone == " " || phone.length < 10) {
-        $('#phone').css('border-color', '#f44336');
-        proceed = false;
+        // Validation at client's end
+        // We simply change border color to red if empty field
+        if (this.phone == "" || this.phone == " " || this.phone.length < 10) {
+            $('#phone').css('border-color', '#f44336');
+            this.proceed = false;
+        }
+
+        // Everything looks good! proceed...
+        if (this.proceed) {
+            // Reset form and show modal
+            $('#form-info')[0].reset();
+            this.showModal();
+
+            // Animate back to first form when submit button is clicked and change button class
+            $('#form-btn').removeClass('submit-btn');
+            $('#form-btn').addClass('first-next-btn');
+            $('#form-btn span').text('next');
+            $('#third').css({ 'display': 'none' });
+            $('#first').fadeIn('slow');
+        }
+        return false;
     }
 
-    // Everything looks good! proceed...
-    if (proceed) {
-        // Reset form and show modal
-        $('#form-info')[0].reset();
-        showModal();
-
-        // Animate back to first form when submit button is clicked and change button class
-        $('#form-btn').removeClass('submit-btn');
-        $('#form-btn').addClass('first-next-btn');
-        $('#form-btn span').text('next');
-        $('#third').css({ 'display': 'none' });
-        $('#first').fadeIn('slow');
+    // Only allow alphabetical characters on input
+    this.requireLetters = function(e) {
+        var value = String.fromCharCode(e.which);
+        var pattern = new RegExp(/[a-zåäö]/i);
+        if (value == " ") return;
+        return pattern.test(value);
     }
-    return false;
-}
 
-// Show modal when message has been sent
-function showModal() {
-    $('#modal-header h2').text('Thank You!');
-    $('#modal-body > p').text('We will send you more information by mail in a few days.');
-    $('#modal-shadow').css('display', 'block');
-    $('#modal-content').fadeIn('fast');
-}
-
-// Close modal when button is clicked
-function handleModal() {
-    $('#modal-shadow').css('display', 'none');
-    $('#modal-content').fadeOut('fast');
-}
-
-// Only allow alphabetical characters on input
-function requireLetters(event) {
-    var value = String.fromCharCode(event.which);
-    var pattern = new RegExp(/[a-zåäö]/i);
-    if (value == " ") return;
-    return pattern.test(value);
-}
-
-// Only allow numerical characters on input
-function requireNumbers(event) {
-    var value = String.fromCharCode(event.which);
-    var pattern = new RegExp(/^[0-9]*$/gm);
-    phoneFormat();
-    return pattern.test(value);
-}
-
-function phoneFormat(){
-    // Get phone input value and strip all characters except digits
-    var input = $('#phone').val();
-    input = input.replace(/\D/g,'');
-
-    // Trim the remaining input to ten characters, to preserve phone number format
-    input = input.substring(0,10);
-
-    // Based upon the length of the string, we add formatting as necessary
-    var size = input.length;
-    if (size == 0) {
-        input = input;
-    } else if (size < 4) {
-        input = '('+input;
-    } else if (size < 7) {
-        input = '('+input.substring(0,3)+') '+input.substring(3,6);
-    } else {
-        input = '('+input.substring(0,3)+') '+input.substring(3,6)+' - '+input.substring(6,9);
+    // Only allow numerical characters on input
+    this.requireNumbers = function(e) {
+        var value = String.fromCharCode(e.which);
+        var pattern = new RegExp(/^[0-9]*$/gm);
+        return pattern.test(value);
     }
-    input = $('#phone').val(input);
-    return input;
-}
 
-// Reset previously set border colors and hide all message on .keyup() and .click()
-function resetBorderColor() {
-    // First form
-    $('#property-value').click(function(){
-        $('#property-value').css('border-color', '');
-    });
+    // Format phone number - input: 1112223333, output: (111) 222-3333
+    this.phoneFormat = function(e) {
+        if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) return false;
+        // Get input value and length
+        this.input = $(this).val();
+        this.inputLength = this.value.length;
+        
+        if (this.inputLength == 3 && this.input.indexOf("(") <= -1) {
+            $(this).val("(" + this.input + ")" + "-");
+        }
+        if (this.inputLength == 4 && this.input.indexOf("(") > -1) {
+            $(this).val(this.input + ")-");
+        }
+        if (this.inputLength == 5 && this.input.indexOf(")") > -1) {
+            $(this).val(this.input + "-");
+        }
+        if (this.inputLength == 9) {
+            $(this).val(this.input + "-");
+            $(this).attr('maxlength', '14');
+        }
+    }
 
-    $('#mortgage-balance').click(function(){
-        $('#mortgage-balance').css('border-color', '');
-    });
+    // Reset previously set border colors and hide all message on .keyup() and .click()
+    this.resetBorderColor = function() {
+        $('#property-value, #mortgage-balance, #zip-code, #select-age, #full-name, #address, #phone')
+            .click( function() {
+                $(this).css('border-color', '');
+        });
+    }
 
-    $('#zip-code').keyup(function(){
-        $("#zip-code").css('border-color', '');
-    });
+    // Close modal when button is clicked
+    this.closeModal = function() {
+        $('#modal-btn').on('click', this.hideModal.bind(this));
+    }
 
-    // Second Form
-    $('#select-age').click(function(){
-        $('#select-age').css('border-color', '');
-    });
+    // Hide modal when close button is clicked
+    this.hideModal = function() {
+        $('#modal-shadow').css('display', 'none');
+        $('#modal-content').fadeOut('fast');
+    }
 
-    $('#full-name').keyup(function(){
-        $('#full-name').css('border-color', '');
-    });
+    // Show modal when message has been sent
+    this.showModal = function() {
+        $('#modal-header h2').text('Thank You!');
+        $('#modal-body > p').text('We will send you more information by mail in a few days.');
+        $('#modal-shadow').css('display', 'block');
+        $('#modal-content').fadeIn('fast');
+    }
 
-    $('#address').keyup(function(){
-        $('#address').css('border-color', '');
-    });
-
-    // Third Form
-    $('#phone').keyup(function(){
-        $('#phone').css('border-color', '');
-    });
 }
