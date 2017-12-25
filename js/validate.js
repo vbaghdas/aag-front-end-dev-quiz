@@ -80,7 +80,7 @@ function Validate() {
             $('#select-age').css('border-color', '#f44336');
             this.proceed = false;
         }
-        if (this.fullName == "" || this.selectAge == "") {
+        if (this.fullName == "" || !/\s/.test(this.fullName) || this.selectAge == "") {
             $('#full-name').css('border-color', '#f44336');
             this.proceed = false;
         }
